@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 12, 2018 at 12:38 AM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Host: localhost:3306
+-- Generation Time: May 13, 2018 at 12:57 AM
+-- Server version: 5.7.18-1
+-- PHP Version: 7.1.6-2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,20 +23,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `trackref`
+--
+
+CREATE TABLE `trackref` (
+  `sn` int(11) NOT NULL,
+  `refID` int(11) DEFAULT NULL,
+  `userID` int(11) DEFAULT NULL,
+  `dateJoined` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `trackref`
+--
+
+INSERT INTO `trackref` (`sn`, `refID`, `userID`, `dateJoined`) VALUES
+(1, 2, 1, '2018:05:13 00:32:01am');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(2) NOT NULL,
-  `uname` varchar(15) NOT NULL,
-  `fullname` varchar(35) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `pword` varchar(64) NOT NULL,
-  `refid` varchar(11) NOT NULL,
-  `refcount` int(255) NOT NULL,
-  `phone` varchar(11) NOT NULL,
-  `img` varchar(255) NOT NULL,
-  `gender` varchar(6) NOT NULL
+  `uname` varchar(15) DEFAULT NULL,
+  `fullname` varchar(35) DEFAULT NULL,
+  `email` varchar(20) DEFAULT NULL,
+  `pword` varchar(64) DEFAULT NULL,
+  `refid` varchar(20) DEFAULT NULL,
+  `refcount` int(255) DEFAULT '0',
+  `phone` varchar(11) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  `gender` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -46,13 +64,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `uname`, `fullname`, `email`, `pword`, `refid`, `refcount`, `phone`, `img`, `gender`) VALUES
-(1, 'Tester', 'Testing Tester', 'tester@tester.io', 'qwertyuiop', 'Tes17665492', 0, '09011223344', '', 'Male'),
-(2, 'xahxvvvv', 'collins', 'vzhv@ggg.com', 'azure', 'xah29064469', 0, '', '', ''),
-(3, 'hello hi', 'collins idubo', 'vzhdv@ggg.com', 'hallo', 'hel28514837', 0, '09032289130', '', 'Male');
+(1, 'Kendrick', 'Precious Tom', 'tomprezine@gmail.com', 'root', '77d6xyep8l3crxx3', 0, '8179685649', NULL, 'Male');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `trackref`
+--
+ALTER TABLE `trackref`
+  ADD PRIMARY KEY (`sn`);
 
 --
 -- Indexes for table `users`
@@ -65,12 +87,15 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `trackref`
+--
+ALTER TABLE `trackref`
+  MODIFY `sn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
-
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

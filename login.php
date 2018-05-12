@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <form action="modules/runsignup.php" method="POST" class="container">
+    <form action="modules/login" method="POST" class="container">
         <br>
         <h5 class="text-center">Sign in </h5>
         <br>
