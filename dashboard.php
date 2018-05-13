@@ -47,7 +47,7 @@
                             <p id="referralLink">http://wetellem.com/?ref=</p>
                             <br>
                             <br>
-                            <button class="btn btn-primary">Copy referral link</button>
+                            <button class="btn btn-primary" data-clipboard-target="#referralLink">Copy referral link</button>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-6" id="right">
@@ -59,7 +59,7 @@
                         <button><i class="fa fa-twitter"></i>Twitter</button>
                         <button><i class="fa fa-linkedin"></i>LinkedIn</button>
                     </div>
-                    <br>
+                    <br><br>
                     <img class="img-responsive" src="img/perks .png" alt="referral info" width="70%">
                 </div>
 
@@ -71,7 +71,10 @@
          </div>
 
     <script src="jquery.js"></script>
+    
     <script src="js/bootstrap.min.js"></script>
+    <script src="clipboard.js/dist/clipboard.min.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
