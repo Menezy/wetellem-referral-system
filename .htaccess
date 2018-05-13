@@ -1,0 +1,23 @@
+# Protect My Directories
+Options -Indexes
+
+# Protect my htaccess file
+<Files .htaccess>
+order deny,allow
+deny from all
+</Files>
+
+# Clean Url for User Profiles
+  AddDefaultCharset UTF-8
+  FileETag None
+  Options +FollowSymLinks -MultiViews
+  
+	RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+signup\.php\?refID=([^\s&]+) [NC]
+	RewriteRule ^ signup/%1? [R=301,L]
+	RewriteRule ^signup/([^/]+)/?$ signup.php?refID=$1 [L,QSA]
+
+RewriteEngine On
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^([^.]+)$ $1.php [NC,L]
+
+# ErrorDocument 404 http://localhost/wetellem-referral-system/404
