@@ -60,7 +60,7 @@
                         <button><i class="fa fa-linkedin"></i>LinkedIn</button>
                     </div>
                     <br>
-                    <img class="img-responsive" src="img/perks .png" alt="referral info" width="380px">
+                    <img class="img-responsive" src="img/perks .png" alt="referral info" width="100%">
                 </div>
 
             </div>
