@@ -48,6 +48,18 @@
                 mysqli_real_escape_string($conn, date("Y:m:d H:i:sa")),
                 mysqli_insert_id($conn));
             if (mysqli_query($conn, $newRef)) {
+                return $this->updateRefCount($refID);
+            } else {
+                return mysqli_error($conn);
+            }
+        }
+        public function updateRefCount($refID)
+        {
+            // Connection Query
+            $conn = $this->conn;
+            // Update Count
+            $updateRefCount = "UPDATE users SET refcount = refcount + 1 WHERE refid='$refID'";
+            if (mysqli_query($conn, $updateRefCount)) {
                 return 200;
             } else {
                 return mysqli_error($conn);

@@ -6,7 +6,7 @@
 
 $config['server']['name'] = "localhost";
 $config['server']['user'] = "root";
-$config['server']['pass'] = "root";
+$config['server']['pass'] = "";
 $config['server']['dbname'] = "tellemdb";
 # URL configs
 $baseURL = "http://localhost/wetellem-referral-system/";
