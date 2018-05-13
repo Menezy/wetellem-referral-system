@@ -101,7 +101,8 @@
             if (mysqli_num_rows($req) > 0) {
                 $row = mysqli_fetch_array($req);
                 $_SESSION['userID'] = $row['id'];
-                return 200;
+                header("Location: http://localhost/wetellem-referral-system/dashboard.php");
+                die();
             } else {
                 return 406;
             }
@@ -116,7 +117,8 @@
             if (isset($_SESSION['userID'])) {
                 unset($_SESSION['userID']);
                 session_destroy();
-                return 200;
+                header("Location: http://localhost/wetellem-referral-system/login.php");
+                die();
             } else {
                 return 406;
             }
