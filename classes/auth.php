@@ -18,20 +18,20 @@
                 return 406;
             } else {
                 // Insert Data
+                //I do this here so we dont have to update the user again after a valid referrer is found.
+                
+                $referrer = null; 
+                if ($refcount > 0 &&& $refcount <= 25) $rank = "Professional";
+                else if ($refcount > 25 && $refcount <= 100) $rank = "Expert"; 
                 if (isset($userData['referrer']) && !empty($userData['referrer'])) {
                     //check if user with ref code exists
                     $referrer = mysqli_real_escape_string($conn, $userData['referrer']);
                     $sql = "SELECT * FROM users WHERE refid = '{$referrer}'";
                     
                     $result = mysqli_query($conn, $sql);
-                    if ($result && ($count = mysqli_num_rows($result)) > 0) {
-                        //user exists. Update user's ref count
-                        $this->updateRefCount($referrer);
-                    } else {
+                    if (!($result && ($count = mysqli_num_rows($result)) > 0))
                         $referrer = null;
-                    }
-                } else {
-                    $referrer = null;
+                    
                 }
 
                 $newUser = sprintf("INSERT INTO users (uname, fullname, email, pword, refid, phone, gender, referrer) " .
@@ -39,7 +39,7 @@
                     mysqli_real_escape_string($conn, $userData['username']),
                     mysqli_real_escape_string($conn, $userData['name']),
                     mysqli_real_escape_string($conn, $userData['email']),
-                    mysqli_real_escape_string($conn, $userData['password']),
+                    password_hash(mysqli_real_escape_string($conn, $userData['password']), PASSWORD_BCRYPT),
                     mysqli_real_escape_string($conn, $userData['myrefID']),
                     mysqli_real_escape_string($conn, $userData['phone']),
                     mysqli_real_escape_string($conn, $userData['gender']),
@@ -47,6 +47,8 @@
                     mysqli_insert_id($conn));
                 if ($result = mysqli_query($conn, $newUser)) {
                     $_SESSION['userID'] = $userID = mysqli_insert_id($conn);
+                    //this will update the referrer's count if he exists but only after the user is saved. U get? yeah. Ok so we can up above like so:
+                    if ($referrer) $this->updateRefCount($referrer);
                     return 200;
                     //return $this->newRef($userData['referrerID'], $userID);
                 } else {
