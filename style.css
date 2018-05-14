@@ -6,8 +6,8 @@ body {
 
 
 .card{
-    width: 350px;
-    height: 400px;
+    width: 400px;
+    height: 420px;
     margin: 0 auto;
 }
 #signin{
@@ -19,8 +19,8 @@ body {
 #referralLink{
     color: white;
     background-color:purple;
-    width:250px;
-    height: 20px;
+    width:400px;
+    height: 100px;
     margin: 0 auto;
     padding-left: 30px;
     padding-bottom: 30px;

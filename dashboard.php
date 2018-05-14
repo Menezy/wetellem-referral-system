@@ -34,17 +34,17 @@
         <div class="container-fluid" id="content">
             <div class="row">
                 <div class="col-xs-12 col-lg-6" id="left">
-                    <div class="card card-block">
+                    <div class="card card-block" style="width:450px;height:420px;">
                         <br>
                         <h4 class="card-title text-center">Welcome,<span></span></h4>
                         <p class="card-text">
                             <p class="text-center">Your current rank is</p>
                             <span class="text-center" style="color:red"; id="rank">
-                                    <b>New Member</b>
+                                    <h4>New Member</h4>
                                 </span>
                             <hr>
                             <p class="text-center">This is your unique referral link</p>
-                            <p id="referralLink">http://wetellem.com/?ref=</p>
+                            <p id="referralLink" style="width:400px;height:40px;">http://wetellem.com/?ref_code=7llg67w24pa51k5x</p>
                             <br>
                             <br>
                             <button class="btn btn-primary" data-clipboard-target="#referralLink">Copy referral link</button>
