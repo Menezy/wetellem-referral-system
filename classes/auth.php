@@ -18,8 +18,24 @@
                 return 406;
             } else {
                 // Insert Data
-                $newUser = sprintf("INSERT INTO users (uname, fullname, email, pword, refid, phone, gender) " .
-                "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s'); ",
+                if (isset($userData['referrer']) && !empty($userData['referrer'])) {
+                    //check if user with ref code exists
+                    $referrer = mysqli_real_escape_string($conn, $userData['referrer']);
+                    $sql = "SELECT * FROM users WHERE refid = '{$referrer}'";
+                    
+                    $result = mysqli_query($conn, $sql);
+                    if ($result && ($count = mysqli_num_rows($result)) > 0) {
+                        //user exists. Update user's ref count
+                        $this->updateRefCount($referrer);
+                    } else {
+                        $referrer = null;
+                    }
+                } else {
+                    $referrer = null;
+                }
+
+                $newUser = sprintf("INSERT INTO users (uname, fullname, email, pword, refid, phone, gender, referrer) " .
+                "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'); ",
                     mysqli_real_escape_string($conn, $userData['username']),
                     mysqli_real_escape_string($conn, $userData['name']),
                     mysqli_real_escape_string($conn, $userData['email']),
@@ -27,10 +43,12 @@
                     mysqli_real_escape_string($conn, $userData['myrefID']),
                     mysqli_real_escape_string($conn, $userData['phone']),
                     mysqli_real_escape_string($conn, $userData['gender']),
+                    $referrer,
                     mysqli_insert_id($conn));
-                if (mysqli_query($conn, $newUser)) {
+                if ($result = mysqli_query($conn, $newUser)) {
                     $_SESSION['userID'] = $userID = mysqli_insert_id($conn);
-                    return $this->newRef($userData['referrerID'], $userID);
+                    return 200;
+                    //return $this->newRef($userData['referrerID'], $userID);
                 } else {
                     return mysqli_error($conn);
                 }

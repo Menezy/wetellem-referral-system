@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <form action="modules/runsignup" method="POST" class="container">
+    <form action="modules/runsignup.php" method="POST" class="container">
         <br>
         <h5 class="text-center">Sign Up</h5>
         <br>
@@ -58,6 +58,14 @@
                         <span class="input-group-text" </span>
                     </div>
                     <input type="text" name="phone" class="form-control" placeholder="Enter your phone number" aria-label="number" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" </span>
+                    </div>
+                    <input type="text" name="referral" class="form-control" placeholder="Enter your referral code" aria-label="number" aria-describedby="basic-addon1"
+                        value="<?php echo (isset($_GET['ref_code']) && !empty($_GET['ref_code'])) ? $_GET['ref_code'] : '' ?>">
                 </div>
                 <!--<div class="input-group mb-3">
                     <div class="input-group-prepend">

@@ -6,10 +6,10 @@
 
 $config['server']['name'] = "localhost";
 $config['server']['user'] = "root";
-$config['server']['pass'] = "";
+$config['server']['pass'] = "Qwertyuiop2";
 $config['server']['dbname'] = "tellemdb";
 # URL configs
-$baseURL = "http://localhost/wetellem-referral-system/";
+$baseURL = "http://wetellem-referral-system.test/";
 $logoURL = $baseURL."assets/img/logo.png";
 // Create connection to the database
 $conn = new mysqli($config['server']['name'], $config['server']['user'], $config['server']['pass'], $config['server']['dbname']);

@@ -20,8 +20,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             'myrefID' => $auth->mt_rand_str(16, 'abcdefghijklmnopqrstuvwxyz1234567890'),
             'phone' => $_POST['phone'],
             'gender' => $_POST['gender'],
-            'referrerID' => $_POST['referrerID']
+            'referrer' => $_POST['referral']
         );
+
         if ($auth->newUser($userData) == 200) {
             echo "Succefully Inserted User";
         } else if ($auth->newUser($userData) == 406) {
