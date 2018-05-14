@@ -21,8 +21,7 @@
                 //I do this here so we dont have to update the user again after a valid referrer is found.
                 
                 $referrer = null; 
-                if ($refcount > 0 &&& $refcount <= 25) $rank = "Professional";
-                else if ($refcount > 25 && $refcount <= 100) $rank = "Expert"; 
+                 
                 if (isset($userData['referrer']) && !empty($userData['referrer'])) {
                     //check if user with ref code exists
                     $referrer = mysqli_real_escape_string($conn, $userData['referrer']);
